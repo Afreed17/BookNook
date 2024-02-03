@@ -1,0 +1,39 @@
+<%- include("partials/header.ejs") %>
+
+
+<div class="nav">
+    <form action="/check" method="post">
+        <input type="text" name="bookSearch" id="bookSearch">
+    </form>
+
+<div class="bookBox">
+    <% if(locals.bookInfo){ %>
+
+        <% for(let item of bookInfo){%>
+
+            <div class="item">
+                <div class="bookImg">
+                    <img src="<%= item.imgData %>" alt="bookImg">
+                </div>
+                <div class="bookDetails">
+                    <div>
+                        <h2><%= item.bookTitle %></h2>
+                        <p><%= item.bookDate %></p>
+                        <p><%= item.bookYear %></p>
+                        <p><%= item.bookAuthor %></p>
+                    </div>
+                    <div>
+                        <form action="/add" method="post">
+                            <button id="addButton" name="addedItem" value="<%= item.id %>" class="button-71" role="button">+</button>
+                        </form>   
+                    </div>
+                </div>
+            </div>
+            ..................................................
+            <% } %>
+        <% } %>
+
+</div>
+
+
+<%- include("partials/footer.ejs") %>
