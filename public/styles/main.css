@@ -84,3 +84,39 @@ body{
     padding: 16px 48px;
   }
 }
+
+.addBook {
+  display: flex;
+  flex-direction: column;
+  
+}
+.addBook form
+{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.addBook input{
+  height: 30px;
+  width: 200px;
+  margin: auto;
+}
+
+.addBook textarea {
+  height: 100px;
+  width: 400px;
+  margin: auto;
+
+}
+
+.addBook button{
+  height: 30px;
+  width: 200px;
+  border-radius: 10px;
+  margin:auto ;
+  border: none;
+}
+
+.addBook button:focus{
+  outline: 0;
+}

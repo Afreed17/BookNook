@@ -31,6 +31,7 @@ app.post("/check",async(req,res)=>{
       bookOb.bookDate = result.data.docs[i].publish_date[0];
       bookOb.imgData = imgURL+result.data.docs[i].isbn[1]+"-S.jpg";
       bookOb.bookAuthor=result.data.docs[i].author_name[0];
+      bookOb.isbn=result.data.docs[i].isbn[1];
       bookArray.push(bookOb);
     }
     console.log(bookArray);
@@ -42,7 +43,13 @@ app.post("/check",async(req,res)=>{
   }
 
 
-})
+});
+
+app.post("/add",async(req,res)=>{
+  const bookTitle = req.body.booktitle;
+  const bookIsbn = req.body.bookisbn;
+  res.render("add.ejs",{title:bookTitle,isbn:bookIsbn});
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
