@@ -9,12 +9,28 @@ const URL = "https://openlibrary.org/search.json?q="
 const imgURL ="https://covers.openlibrary.org/b/isbn/"
 let bookArray=[];
 
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "BookNook",
+  password: "afreedafu17",
+  port: 5432,
+});
+db.connect();
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 
 app.get("/",async(req,res)=>{
-res.render("index.ejs");
+try{
+const result = await db.query("Select * from books");
+const items = result.rows;
+res.render("index.ejs",{data:items});
+}
+catch(err){
+
+}
 });
 
 app.post("/check",async(req,res)=>{
@@ -50,6 +66,23 @@ app.post("/add",async(req,res)=>{
   const bookIsbn = req.body.bookisbn;
   res.render("add.ejs",{title:bookTitle,isbn:bookIsbn});
 });
+
+app.post("/addData",async(req,res)=>{
+  const title = req.body.Booktitle;
+  const description = req.body.description;
+  const isbn = req.body.isbn;
+  const rating = req.body.rating;
+
+  try{
+    await db.query("Insert into books (title,description,isbn,rating) values ($1,$2,$3,$4)",[title,description,isbn,rating]);
+    res.redirect("/");
+  }
+  catch(err){
+    console.log (err)
+  }
+
+
+})
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
