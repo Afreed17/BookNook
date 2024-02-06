@@ -40,7 +40,7 @@ app.post("/check",async(req,res)=>{
 
     const bookName = req.body.bookSearch;
     const result = await axios.get(URL+bookName);
-    for(let i=0;i<10;i++){
+    for(let i=0;i<5;i++){
       let bookOb= new Object();
       bookOb.id = i+1;
       bookOb.bookTitle= result.data.docs[i].title;
@@ -50,7 +50,7 @@ app.post("/check",async(req,res)=>{
       bookOb.isbn=result.data.docs[i].isbn[1];
       bookArray.push(bookOb);
     }
-    console.log(bookArray);
+    // console.log(bookArray);
     res.render("index.ejs",{bookInfo:bookArray});
   }
   catch(err)
@@ -71,10 +71,11 @@ app.post("/addData",async(req,res)=>{
   const title = req.body.Booktitle;
   const description = req.body.description;
   const isbn = req.body.isbn;
+  const img = imgURL+req.body.isbn+"-M.jpg"
   const rating = req.body.rating;
 
   try{
-    await db.query("Insert into books (title,description,isbn,rating) values ($1,$2,$3,$4)",[title,description,isbn,rating]);
+    await db.query("Insert into books (title,description,isbn,rating,imgaddr) values ($1,$2,$3,$4,$5)",[title,description,isbn,rating,img]);
     res.redirect("/");
   }
   catch(err){
@@ -83,6 +84,21 @@ app.post("/addData",async(req,res)=>{
 
 
 })
+
+app.post("/edit",async(req,res)=>{
+  const upRating = req.body.updatedRating;
+  const upDescription = req.body.updatedItemDescription;
+  const upId = req.body.updatedItemId;
+
+  try{
+    await db.query("UPDATE books SET rating = ($1),description = ($2) where id = ($3)",[upRating,upDescription,upId]);
+    res.redirect("/");
+  }
+  catch(err)
+  {
+    console.log(err);
+  }
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

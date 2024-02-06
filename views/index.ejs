@@ -49,16 +49,43 @@
         <% for(let item of data){%>
             <div class="eachBookDisplay">
                 
-                <img src="#" alt="#">
-                <h2><%= item.title %></h2>
-                <p><%= item.description %></p>
-                <h4>ISBN:<%= item.isbn %></h4>
-                <h5>RATING:<%= item.rating %></h5>
+                <img src="<%= item.imgaddr %>" alt="bookcover">
+                <h2 id="title<%= item.id %>"><%= item.title %></h2>
+                <p id="description<%= item.id %>"><%= item.description %></p>
+                <h4 id="isbn<%= item.id %>">ISBN:<%= item.isbn %></h4>
+                <h5 id="rating<%= item.id %>">RATING:<%= item.rating %></h5>
+                <button class="edit" id="edit<%=item.id%>" onclick="handler('<%= item.id %>')">edit</button>
+
+
+
+                <form action="/edit" class="edit" method="post">
+                    <input type="hidden" name="updatedItemId" value="<%= item.id %>">
+                    <input id="updatedDescription<%=item.id%>" type="text" name="updatedItemDescription" value="<%= item.description %>" autocomplete="off"
+                    autofocus="true" hidden="true" />
+                    <input type="number" name="updatedRating" id="updatedRating<%= item.id %>" value="<%= item.rating %>" min="0" max="5"  required width="40px" height="20px" autofocus="true" hidden="true">
+                    <button id="done<%=item.id%>" class="edit" type="submit" hidden></button>
+                </form>
+
+
             </div>
             <% } %>
 
    <% } %>
 </div>
+
+<script>
+    function handler(id){
+        document.getElementById("title" + id).setAttribute("hidden", true);
+        document.getElementById("description" + id).setAttribute("hidden", true);
+        document.getElementById("isbn" + id).setAttribute("hidden", true);
+        document.getElementById("rating" + id).setAttribute("hidden", true);
+        document.getElementById("edit" + id).setAttribute("hidden", true);
+
+        document.getElementById("done" + id).removeAttribute("hidden");
+      document.getElementById("updatedDescription" + id).removeAttribute("hidden");
+      document.getElementById("updatedRating" + id).removeAttribute("hidden");
+    }
+</script>
 
 
 <%- include("partials/footer.ejs") %>
