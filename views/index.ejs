@@ -38,10 +38,8 @@
                     </div>
                 </div>
             </div>
-            ..................................................
             <% } %>
         <% } %>
-
 </div>
 
 <div class="bookDisplay">
@@ -55,6 +53,11 @@
                 <h4 id="isbn<%= item.id %>">ISBN:<%= item.isbn %></h4>
                 <h5 id="rating<%= item.id %>">RATING:<%= item.rating %></h5>
                 <button class="edit" id="edit<%=item.id%>" onclick="handler('<%= item.id %>')">edit</button>
+                
+                <form action="/delete" method="post">
+                    <button class="delete" name="deleteItemId" value="<%= item.id %>" >del</button>
+
+                </form>
 
 
 

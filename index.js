@@ -40,7 +40,7 @@ app.post("/check",async(req,res)=>{
 
     const bookName = req.body.bookSearch;
     const result = await axios.get(URL+bookName);
-    for(let i=0;i<5;i++){
+    for(let i=0;i<2;i++){
       let bookOb= new Object();
       bookOb.id = i+1;
       bookOb.bookTitle= result.data.docs[i].title;
@@ -99,6 +99,17 @@ app.post("/edit",async(req,res)=>{
     console.log(err);
   }
 });
+
+app.post("/delete",async(req,res)=>{
+  const deleteId = req.body.deleteItemId;
+  try{
+    await db.query("DELETE from books where id = ($1)",[deleteId]);
+    res.redirect("/");
+  }
+  catch(err){
+    console.log(err)
+  }
+})
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
