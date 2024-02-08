@@ -4,11 +4,12 @@
 
 <div class="nav">
     <div class="navContent">
-        <img src="/assets/icons/logo.jpeg" alt="logo" height="50px" width="50px" style="border-radius: 10px;">
+        <h2>BooKNooK</h2>
     </div>
     <div class="searchBar">
         <form action="/check" method="post">
-            <input type="text" name="bookSearch" id="bookSearch">
+            <input type="text" name="bookSearch" id="bookSearch" placeholder="<%= locals.err ? err :  'Enter book'%>" autocomplete="off">
+            <button type="submit"><img src="/assets/icons/go-next-svgrepo-com.svg" alt="ok" height="10px" width="30px"></button>
         </form>
     </div>
 </div>
@@ -46,18 +47,21 @@
     <% if(locals.data){%>
         <% for(let item of data){%>
             <div class="eachBookDisplay">
-                
-                <img src="<%= item.imgaddr %>" alt="bookcover">
-                <h2 id="title<%= item.id %>"><%= item.title %></h2>
-                <p id="description<%= item.id %>"><%= item.description %></p>
-                <h4 id="isbn<%= item.id %>">ISBN:<%= item.isbn %></h4>
-                <h5 id="rating<%= item.id %>">RATING:<%= item.rating %></h5>
-                <button class="edit" id="edit<%=item.id%>" onclick="handler('<%= item.id %>')">edit</button>
-                
-                <form action="/delete" method="post">
-                    <button class="delete" name="deleteItemId" value="<%= item.id %>" >del</button>
+                <div class="cover">
+                    <img src="<%= item.imgaddr %>" alt="bookcover">
+                </div>
+                <div class="details">
+                    <h2 id="title<%= item.id %>"><%= item.title %></h2>
+                    <p id="description<%= item.id %>"><%= item.description %></p>
+                    <h4 id="isbn<%= item.id %>">ISBN:<%= item.isbn %></h4>
+                    <h5 id="rating<%= item.id %>">RATING:<%= item.rating %></h5>
+                    <button class="edit" id="edit<%=item.id%>" onclick="handler('<%= item.id %>')">edit</button>
+                    
+                    <form action="/delete" method="post">
+                        <button class="delete" name="deleteItemId" value="<%= item.id %>" >del</button>
 
-                </form>
+                    </form>
+                </div>
 
 
 

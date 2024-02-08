@@ -21,15 +21,21 @@ db.connect();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+async function bookStored()
+{
+  const result = await db.query("Select * from books");
+  const items = result.rows;
+  return items;
+}
+
 
 app.get("/",async(req,res)=>{
 try{
-const result = await db.query("Select * from books");
-const items = result.rows;
+const items = await bookStored();
 res.render("index.ejs",{data:items});
 }
 catch(err){
-
+console.log(err);
 }
 });
 
@@ -40,7 +46,7 @@ app.post("/check",async(req,res)=>{
 
     const bookName = req.body.bookSearch;
     const result = await axios.get(URL+bookName);
-    for(let i=0;i<2;i++){
+    for(let i=0;i<3;i++){
       let bookOb= new Object();
       bookOb.id = i+1;
       bookOb.bookTitle= result.data.docs[i].title;
@@ -50,12 +56,13 @@ app.post("/check",async(req,res)=>{
       bookOb.isbn=result.data.docs[i].isbn[1];
       bookArray.push(bookOb);
     }
-    // console.log(bookArray);
     res.render("index.ejs",{bookInfo:bookArray});
   }
   catch(err)
   {
     console.log(err);
+    const items = await bookStored();
+    res.render("index.ejs",{data:items,err:"BOOK NOT FOUND"});
   }
 
 

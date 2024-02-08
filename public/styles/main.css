@@ -1,5 +1,9 @@
 body{
     background-color: white;
+    margin: 0%;
+    font-family: Montserrat,Merriweather,CrimsonText;
+    background-image: url("../assets/icons/GreenPrint.jpeg");
+  
 }
 .bookBox{
 
@@ -14,6 +18,78 @@ body{
     font-size: 15px;
     color: cadetblue;
 }
+
+.nav{
+  display: flex;
+  justify-content: space-between;
+  background-color: #5F7161;
+  padding: 25px;
+}
+
+.navContent{
+  font-family: Monoton,Montserrat,Merriweather,CrimsonText;
+  font-size: 20px;
+  color:#F8FAE5;
+}
+
+.searchBar input{
+  border-radius: 10px;
+  height: 36px;
+  width: 250px;
+  border: none;
+  text-align: center;
+  margin-right: 10px;
+  color: #43766C;
+}
+
+.searchBar input::placeholder{
+  color: #638889;
+}
+
+.searchBar input:focus{
+  outline: 0;
+}
+
+.searchBar button{
+  border-radius: 10px;
+  height: 34px;
+  border: none;
+  text-align: center;
+  background-color: #fff;
+}
+
+.searchBar button:hover{
+  background-color: #F8FAE5;
+}
+
+.bookDisplay{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.eachBookDisplay{
+  width: 900px;
+  display: flex;
+  border-radius: 10px;
+}
+
+.details{
+  background-color:#739072;
+  width: 600px;
+}
+
+.cover{
+  padding: 30px;
+}
+.cover img{
+  margin: auto;
+  margin-left: 20px;
+}
+
+
 
 
 
