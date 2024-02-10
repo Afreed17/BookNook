@@ -52,25 +52,41 @@
                 </div>
                 <div class="details">
                     <h2 id="title<%= item.id %>"><%= item.title %></h2>
-                    <p id="description<%= item.id %>"><%= item.description %></p>
-                    <h4 id="isbn<%= item.id %>">ISBN:<%= item.isbn %></h4>
-                    <h5 id="rating<%= item.id %>">RATING:<%= item.rating %></h5>
-                    <button class="edit" id="edit<%=item.id%>" onclick="handler('<%= item.id %>')">edit</button>
+                    <table>
+                        
+                        <tr>
+                            <td><h3 class="Dhead">Description</h3></td>
+                            <td><p id="description<%= item.id %>"><%= item.description %></p></td>
+                        </tr>
+                        <tr>
+                            <td><h3 class="Dhead">isbn</h3></td>
+                            <td><p id="isbn<%= item.id %>"><%= item.isbn %></p></td>
+                        </tr>
+                        <tr>
+                            <td><h3 class="Dhead">Rating</h3></td>
+                            <td><p id="rating<%= item.id %>"><%= item.rating %></p></td>
+                        </tr>
+                    </table>
+                    <div class="editDel">
+                        <button class="edit" id="edit<%=item.id%>" onclick="handler('<%= item.id %>')"><img src="/assets/icons/edit-3-svgrepo-com.svg" alt="editImg" height="30px" width="30px"></button>
+                        <form action="/delete" method="post">
+                            <button class="delete" name="deleteItemId" value="<%= item.id %>" ><img src="/assets/icons/delete-svgrepo-com.svg" alt="delImg" height="30px" width="30px"></button>
+                        </form>
+                    </div>
                     
-                    <form action="/delete" method="post">
-                        <button class="delete" name="deleteItemId" value="<%= item.id %>" >del</button>
-
-                    </form>
                 </div>
 
 
 
-                <form action="/edit" class="edit" method="post">
+                <form action="/edit" class="Edit" method="post">
                     <input type="hidden" name="updatedItemId" value="<%= item.id %>">
                     <input id="updatedDescription<%=item.id%>" type="text" name="updatedItemDescription" value="<%= item.description %>" autocomplete="off"
                     autofocus="true" hidden="true" />
-                    <input type="number" name="updatedRating" id="updatedRating<%= item.id %>" value="<%= item.rating %>" min="0" max="5"  required width="40px" height="20px" autofocus="true" hidden="true">
-                    <button id="done<%=item.id%>" class="edit" type="submit" hidden></button>
+                    <div class="ratEdit">
+                        <input type="number"  name="updatedRating" id="updatedRating<%= item.id %>" value="<%= item.rating %>" min="0" max="5"  required width="40px" height="20px" autofocus="true" hidden="true">
+                        <button hidden id="done<%=item.id%>" type="submit"> <img src="/assets/icons/done-v-svgrepo-com.svg" alt="done-img" height="30px" width="30px"></button>
+                    </div>
+                    
                 </form>
 
 

@@ -22,14 +22,14 @@ body{
 .nav{
   display: flex;
   justify-content: space-between;
-  background-color: #5F7161;
+  background-color: #FEFBF6;
   padding: 25px;
 }
 
 .navContent{
   font-family: Monoton,Montserrat,Merriweather,CrimsonText;
   font-size: 20px;
-  color:#F8FAE5;
+  color:#B3A398;
 }
 
 .searchBar input{
@@ -39,11 +39,12 @@ body{
   border: none;
   text-align: center;
   margin-right: 10px;
-  color: #43766C;
+  color: #FEFBF6;
+  background-color: #B3A398;
 }
 
 .searchBar input::placeholder{
-  color: #638889;
+  color: #FEFBF6;
 }
 
 .searchBar input:focus{
@@ -55,7 +56,7 @@ body{
   height: 34px;
   border: none;
   text-align: center;
-  background-color: #fff;
+  background-color: #B3A398;
 }
 
 .searchBar button:hover{
@@ -74,25 +75,15 @@ body{
   width: 900px;
   display: flex;
   border-radius: 10px;
-}
-
-.details{
-  background-color:#739072;
-  width: 600px;
-}
-
-.cover{
+  background-color: #FEFBF6;
   padding: 30px;
+  border: 3px solid #503C3C;
 }
-.cover img{
+.cover{
   margin: auto;
-  margin-left: 20px;
-}
-
-
-
-
-
+  margin-right: 50px;
+ 
+} 
 .item{
     display: flex;
     gap: 10px;
@@ -109,6 +100,105 @@ body{
 #addButton{
     border-radius:30px;
     border: none;
+}
+
+.editDel button{
+  border-radius: 10px;
+  height: 34px;
+  border: none;
+  text-align: center;
+  background-color: #B3A398;
+}
+
+.editDel{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.Edit input{
+  border-radius: 10px;
+  height: 50px;
+  width:min-content;
+  border: none;
+  text-align: center;
+  margin-right: 10px;
+  color:#FEFBF6 ;
+  background-color: #B3A398;
+  margin-left: 30px;
+  font-size: 20px;
+}
+
+.Edit input:focus{
+  outline: 0;
+}
+
+.ratEdit input{
+  width: 60px;
+  height: 60px;
+}
+
+.ratEdit button
+{
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  background-color: #B3A398;
+}
+
+.ratEdit button:hover{
+  background-color: #FEFBF6;
+}
+
+.Edit{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-items: center;
+}
+
+.editDel button:hover{
+  background-color: #FEFBF6;
+}
+
+.details{
+  background-color: #FEFBF6;
+  color: #B3A398;
+  border-radius: 10px;
+  border: 1px solid #503C3C;
+  text-align: center;
+  padding: 30px;
+  width: 600px;
+  /* display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  overflow: scroll; */
+}
+.details h2{
+  font-weight: 300;
+  color: #503C3C;
+  font-size: 30px;
+}
+
+.Dhead{
+  color: #503C3C;
+  font-size: 20px;
+}
+table {
+  margin-left: 50px;
+  text-align: left;
+  margin-top: 30px;
+}
+table p{
+  margin-left: 10px;
+  margin-top: 10px;
+  text-align:start;
+  font-size: 18px;
 }
 
  
@@ -195,4 +285,19 @@ body{
 
 .addBook button:focus{
   outline: 0;
+}
+
+footer{
+  font-size: 40px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: Monoton,Montserrat,Merriweather,CrimsonText;
+  color:#FEFBF6;
+  
+
+
 }
