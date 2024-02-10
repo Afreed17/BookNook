@@ -51,7 +51,7 @@ app.post("/check",async(req,res)=>{
       bookOb.id = i+1;
       bookOb.bookTitle= result.data.docs[i].title;
       bookOb.bookDate = result.data.docs[i].publish_date[0];
-      bookOb.imgData = imgURL+result.data.docs[i].isbn[1]+"-S.jpg";
+      bookOb.imgData = imgURL+result.data.docs[i].isbn[1]+"-M.jpg";
       bookOb.bookAuthor=result.data.docs[i].author_name[0];
       bookOb.isbn=result.data.docs[i].isbn[1];
       bookArray.push(bookOb);

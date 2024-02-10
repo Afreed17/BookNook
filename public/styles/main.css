@@ -8,15 +8,31 @@ body{
 .bookBox{
 
     margin: 20px;
-    max-height: 450px;
-    max-width: 250px;
+    max-height: 600px;
+    max-width: 600px;
+    border-radius: 10px;
     display: flex;
+    gap:40px ;
     flex-direction: column;
     align-items: flex-start;
     flex-wrap: nowrap;
     overflow: scroll;
     font-size: 15px;
-    color: cadetblue;
+    color: #503C3C;
+    background-color: #FEFBF6;
+}
+
+.item{
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.bookImg{
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav{
@@ -84,17 +100,14 @@ body{
   margin-right: 50px;
  
 } 
-.item{
-    display: flex;
-    gap: 10px;
-}
-.bookImg{
-    margin: auto;
-    height: 100px;
-    width:50px
-}
+
 .bookDetails{
-    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.details h2{
+  font-family: Protest Strike;
 }
 
 #addButton{
@@ -174,10 +187,6 @@ body{
   text-align: center;
   padding: 30px;
   width: 600px;
-  /* display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  overflow: scroll; */
 }
 .details h2{
   font-weight: 300;
@@ -185,9 +194,15 @@ body{
   font-size: 30px;
 }
 
+.details p{
+  font-family:Dancing Script,monospace ;
+  font-size: 26px;
+}
+
 .Dhead{
   color: #503C3C;
   font-size: 20px;
+  font-family: Merriweather,monospace;
 }
 table {
   margin-left: 50px;
@@ -206,10 +221,10 @@ table p{
 
 /* CSS */
 .button-71 {
-  background-color:cadetblue;
+  background-color:#503C3C;
   border: 0;
   border-radius: 50px;
-  color: #fff;
+  color: #FEFBF6;
   cursor: pointer;
   display: inline-block;
   font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
@@ -297,7 +312,64 @@ footer{
   margin-bottom: 20px;
   font-family: Monoton,Montserrat,Merriweather,CrimsonText;
   color:#FEFBF6;
-  
+}
 
+.addBook{
+  background-color: #FEFBF6;
+  width: 900px;
+  min-height: 500px;
+  margin: auto;
+  margin-top: 100px;
+  padding: 50px;
+  align-items: center;
+  border-radius: 10px;
+}
 
+.addHead{
+  font-family: Monoton,Montserrat,Merriweather,CrimsonText;
+  color: #503C3C;
+  margin-bottom: 40px;
+}
+
+.addDetail input{
+  height: 50px;
+  width: 300px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 7px;
+  background-color: #B3A398;
+  color: #FEFBF6;
+  text-align: center;
+  padding: 30px;
+}
+
+.addDetail input:focus{
+  outline: 0;
+}
+
+.addDetail button{
+  background-color: #FEFBF6;
+}
+
+.addDetail input::placeholder{
+  color: #FEFBF6;
+}
+
+.addDetail textarea:focus{
+  outline: 0;
+}
+
+.addDetail textarea::placeholder{
+  color: #FEFBF6;
+}
+
+.addDetail textarea{
+  height: 150px;
+  width: 500px;
+  background-color: #B3A398;
+  color: #FEFBF6;
+  border-radius: 7px;
+  text-align: center;
+  padding: 30px;
 }

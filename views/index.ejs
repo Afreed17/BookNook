@@ -11,36 +11,48 @@
             <input type="text" name="bookSearch" id="bookSearch" placeholder="<%= locals.err ? err :  'Enter book'%>" autocomplete="off">
             <button type="submit"><img src="/assets/icons/go-next-svgrepo-com.svg" alt="ok" height="10px" width="30px"></button>
         </form>
+        <form action="/sort" method="post">
+            <label for="sort">SORT BY:</label>
+            <option value="id" name="sort">ID</option>
+            <option value="date" name="sort">DATE</option>
+            <button type="submit">ok</button>
+        </form>
     </div>
 </div>
 
+
+
 <div class="bookBox">
+
     <% if(locals.bookInfo){ %>
-
         <% for(let item of bookInfo){%>
-            <form action="/add" method="post">
-            <div class="item">
-                <div class="bookImg">
-                    <img src="<%= item.imgData %>" alt="bookImg">
-                </div>
-                <div class="bookDetails">
-                    <div>
-                        <input type="text" name="booktitle" value="<%=item.bookTitle  %>" hidden>
-                        <input type="text" name="bookisbn" value="<%=item.isbn %>" hidden>
-                        <h2><%= item.bookTitle %></h2>
-                        <p><%= item.bookDate %></p>
-                        <p><%= item.bookYear %></p>
-                        <p><%= item.bookAuthor %></p>
-                    </div>
-                    <div>
 
+            <form action="/add" method="post">
+                <div class="item">
+                     
+                    <div class="bookImg">
+                        <img src="<%= item.imgData %>" alt="bookImg">
+                    </div>
+
+                    <div class="bookDetails">
+
+                        <div>
+                            <input type="text" name="booktitle" value="<%=item.bookTitle  %>" hidden>
+                            <input type="text" name="bookisbn" value="<%=item.isbn %>" hidden>
+                            <h2><%= item.bookTitle %></h2>
+                            <p><%= item.bookDate %></p>
+                            <p><%= item.bookYear %></p>
+                            <p><%= item.bookAuthor %></p>
+                        </div>
+
+                        <div>
                             <button id="addButton" name="addedItem"  value="<%= item.id %>" class="button-71" role="button">+</button>
-                        </form>   
+                        </div>
                     </div>
                 </div>
-            </div>
-            <% } %>
+            </form> 
         <% } %>
+    <% } %>
 </div>
 
 <div class="bookDisplay">
@@ -55,15 +67,15 @@
                     <table>
                         
                         <tr>
-                            <td><h3 class="Dhead">Description</h3></td>
+                            <td><h3 class="Dhead">Description:</h3></td>
                             <td><p id="description<%= item.id %>"><%= item.description %></p></td>
                         </tr>
                         <tr>
-                            <td><h3 class="Dhead">isbn</h3></td>
+                            <td><h3 class="Dhead">isbn:</h3></td>
                             <td><p id="isbn<%= item.id %>"><%= item.isbn %></p></td>
                         </tr>
                         <tr>
-                            <td><h3 class="Dhead">Rating</h3></td>
+                            <td><h3 class="Dhead">Rating:</h3></td>
                             <td><p id="rating<%= item.id %>"><%= item.rating %></p></td>
                         </tr>
                     </table>

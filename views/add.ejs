@@ -1,15 +1,17 @@
 <%- include('partials/header.ejs'); -%>
+<div class="add">
 
-<div class="addBook">
-    <% if (locals.title && locals.isbn) %>
-    <h2>ADD YOUR BOOK</h2>
-    <form action="/addData" method="post">
-                <input type="text" name="Booktitle" value="<%= title %>" id="Booktitle">
-                <textarea name="description" id="description" cols="30" rows="10" placeholder="ENTER YOUR DESCRIPTION" required></textarea>
-                <input type="text" name="isbn" value="<%= isbn %>" id="isbn">
-                <input type="number" name="rating" id="rating" min="0" max="5" placeholder="Your Rating" required width="40px" height="20px" autocomplete="off" >
-                <button type="submit" onchange="this.form.submit()" name="addItem">submit</button>
-    </form>
+    <div class="addBook">
+        <% if (locals.title && locals.isbn) %>
+        <div class="addHead"><h2>ADD YOUR BOOK</h2></div>
+        <form class="addDetail" action="/addData" method="post">
+                    <input type="text" name="Booktitle" value="<%= title %>" id="Booktitle">
+                    <textarea name="description" id="description" cols="30" rows="10" placeholder="ENTER YOUR DESCRIPTION" required></textarea>
+                    <input type="text" name="isbn" value="<%= isbn %>" id="isbn">
+                    <input type="number" name="rating" id="rating" min="0" max="5" placeholder="Your Rating" required width="40px" height="20px" autocomplete="off" >
+                    <button type="submit" onchange="this.form.submit()" name="addItem"><img src="/assets/icons/done-ring-round-svgrepo-com.svg" alt="submit" height="50px" width="50px"></button>
+        </form>
+    </div>
 </div>
 
 
