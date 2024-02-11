@@ -28,6 +28,27 @@ async function bookStored()
   return items;
 }
 
+async function bookOrder()
+{
+  const result = await db.query("Select * from books order by id;");
+  const items = result.rows;
+  return items;
+}
+
+async function bookOrder1()
+{
+  const result = await db.query("Select * from books order by title;");
+  const items = result.rows;
+  return items;
+}
+
+async function bookOrder2()
+{
+  const result = await db.query("Select * from books order by rating desc;");
+  const items = result.rows;
+  return items;
+}
+
 
 app.get("/",async(req,res)=>{
 try{
@@ -117,6 +138,29 @@ app.post("/delete",async(req,res)=>{
     console.log(err)
   }
 })
+
+app.post("/sort",async(req,res) =>{
+  const sortOpt = req.body.sort;
+  try{
+    if(sortOpt=='id'){
+      const item = await bookOrder();
+      res.render("index.ejs",{data:item})
+    }
+    if(sortOpt == 'title'){
+      const item1 = await bookOrder1();
+      res.render("index.ejs",{data:item1})
+    }
+
+    if(sortOpt == 'rating'){
+      const item1 = await bookOrder2();
+      res.render("index.ejs",{data:item1})
+    }
+    
+  }
+  catch(err){
+    console.log(err);
+  }
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

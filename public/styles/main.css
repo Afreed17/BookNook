@@ -47,6 +47,41 @@ body{
   font-size: 20px;
   color:#B3A398;
 }
+#Sort{
+  margin-left: 30px;
+  margin-bottom: 30px;
+  color: #FEFBF6;
+  font-size: 20px;
+}
+
+#Sort button{
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  background-color: #F8FAE5;
+  height: 34px;
+}
+
+#Sort button:hover{
+  background-color: #B3A398;
+
+}
+
+#Sort label{
+  font-family:Monoton,Montserrat,Merriweather,CrimsonText;
+}
+
+#Sort select{
+  text-align: center;
+  font-size: 15px;
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  background-color: #F8FAE5;
+  color: #503C3C;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
 
 .searchBar input{
   border-radius: 10px;

@@ -11,12 +11,6 @@
             <input type="text" name="bookSearch" id="bookSearch" placeholder="<%= locals.err ? err :  'Enter book'%>" autocomplete="off">
             <button type="submit"><img src="/assets/icons/go-next-svgrepo-com.svg" alt="ok" height="10px" width="30px"></button>
         </form>
-        <form action="/sort" method="post">
-            <label for="sort">SORT BY:</label>
-            <option value="id" name="sort">ID</option>
-            <option value="date" name="sort">DATE</option>
-            <button type="submit">ok</button>
-        </form>
     </div>
 </div>
 
@@ -54,6 +48,16 @@
         <% } %>
     <% } %>
 </div>
+
+<form action="/sort" method="post" id="Sort">
+    <label for="sort">SORT BY:</label>
+    <select name="sort" id="sort">
+        <option value="id" name="sort">ID</option>
+        <option value="title" name="sort">TITLE</option>
+        <option value="rating" name="sort">RATING</option>
+    </select>
+    <button type="submit"><img src="/assets/icons/go-next-svgrepo-com.svg" alt="ok" height="13px" width="30px"></button>
+</form>
 
 <div class="bookDisplay">
     <% if(locals.data){%>
